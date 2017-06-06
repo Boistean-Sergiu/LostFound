@@ -114,6 +114,7 @@ http.createServer(function (request, response) {
     console.log(request.url);
     var par = url.parse(request.url, true);
 
+
     if (request.method == "GET" && par.pathname == "/login.html" && par.query.id_utilizator) {
         var item = {
             _id: par.query.id_utilizator,
@@ -128,12 +129,52 @@ http.createServer(function (request, response) {
                             fs.createReadStream("./html pages/index.html").pipe(response);
                         } else {
                             console.log("credentiale gresite");
-                            
+
                         }
-                    if (err) console.log (err);
+                    if (err)
+                        console.log(err);
                 }
         );
-    }else
+    }
+    if (request.method == "GET" && par.pathname == "/new.html" && par.query.titlul) {
+        var item = {
+            _id: par.query.titlul,
+            ziua: par.query.Ziua,
+            luna: par.query.Luna,
+            anul: par.query.Anul,
+            Categoria: par.query.Categoria,
+            stare: par.query.stare,
+            //poza :par.query.poza,
+            descriere: par.query.descriere
+        }
+        
+        
+        collections.electronice.findOne({_id: par.query.titlul}, function (err, user) {
+
+            if (user === null) {
+
+                collections.electronice.insert(item, function (err, res) {
+                    if (err)
+                        console.log(err);
+                    console.log("Number of records inserted: " + res.insertedCount);
+                    response.writeHead(200, {
+                        "Content-Type": "text/plain"
+                    });
+                    response.write("anuntul a fost inserat");
+                    
+                    response.end();
+                });
+            } else {
+                console.log("titlul anuntului este deja in baza de date la aceasta categorie"); // de returna pe pagina 
+                response.writeHead(200, {
+                    "Content-Type": "text/plain"
+                });
+                response.write("titlu deja existent in baza de date");
+               
+                response.end();
+            }
+        });
+    } else
 
     if (request.method == "GET" && par.pathname == "/register.html" && par.query.nume) {
         var item = {
@@ -142,41 +183,41 @@ http.createServer(function (request, response) {
             prenume: par.query.prenume,
             parola: par.query.parola,
             email: par.query.email,
-            status : "logged"
+            status: "logged"
         };
         collections.useri.findOne({_id: par.query.id_utilizator}, function (err, user) {
-             
-            if (user === null ) {
+
+            if (user === null) {
                 collections.useri.insert(item, function (err, res) {
                     if (err)
                         console.log(err);
                     console.log("Number of records inserted: " + res.insertedCount);
-                                    response.writeHead(200, {"Content-Type": "text/html"});
-                fs.createReadStream("./html pages/index.html").pipe(response);
+                    response.writeHead(200, {"Content-Type": "text/html"});
+                    fs.createReadStream("./html pages/index.html").pipe(response);
                 });
             } else {
                 console.log("aces id_utilizator exista deja"); // de returna pe pagina 
-                                response.writeHead(200, {"Content-Type": "text/html"});
+                response.writeHead(200, {"Content-Type": "text/html"});
                 fs.createReadStream("./html pages/login.html").pipe(response);
             }
         });
 
-                
+
 
 
     } else
-	if (request.method == "GET" && par.pathname == "/new.html" && par.query.titlul){
-		var item = {
-			titlul : par.query.titlul,
-			ziua : par.query.ziua,
-			luna : par.query.luna,
-			anul : par.query.anul,
-			categoria : par.query.categoria,
-			stare : par.query.stare,
-			poza : par.query.poza,
-			descriere : par.query.descriere
-		};
-	}else
+    if (request.method == "GET" && par.pathname == "/new.html" && par.query.titlul) {
+        var item = {
+            titlul: par.query.titlul,
+            ziua: par.query.ziua,
+            luna: par.query.luna,
+            anul: par.query.anul,
+            categoria: par.query.categoria,
+            stare: par.query.stare,
+            poza: par.query.poza,
+            descriere: par.query.descriere
+        };
+    } else
     if (request.method == "GET")
         switch (par.pathname) {
             case '/' :
@@ -215,10 +256,10 @@ http.createServer(function (request, response) {
 
             case '/login.html':
             {
-                if ( par.query.id_utilizator == null ){
-                response.writeHead(200, {"Content-Type": "text/html"});
-                fs.createReadStream("./html pages/login.html").pipe(response);
-            }
+                if (par.query.id_utilizator == null) {
+                    response.writeHead(200, {"Content-Type": "text/html"});
+                    fs.createReadStream("./html pages/login.html").pipe(response);
+                }
                 break;
             }
             case '/conAdmin.html':
