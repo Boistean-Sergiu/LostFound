@@ -149,11 +149,11 @@ http.createServer(function (request, response) {
         }
         
         
-        collections.electronice.findOne({_id: par.query.titlul}, function (err, user) {
+        collections[par.query.Categoria].findOne({_id: par.query.titlul}, function (err, user) {
 
             if (user === null) {
 
-                collections.electronice.insert(item, function (err, res) {
+                collections[par.query.Categoria].insert(item, function (err, res) {
                     if (err)
                         console.log(err);
                     console.log("Number of records inserted: " + res.insertedCount);
