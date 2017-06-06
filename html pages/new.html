@@ -25,18 +25,23 @@
 		<div class="mainn">
 			<br>
 			<h2>Anunt nou</h2>
+			<form id='registerAnunt'>
+			<div class='form-input'>
 			<label>Titlu anunt:</label><br>
-			<input type="text" name="titlul"><br><br>
+			<input type="text" name="titlul" id="titlu" placeholder="Introduceti titlul anuntului">
+			</div><br>
+			<div class="form-input">
 			<div class="date">
 			<label>Data la care a fost gasit/pierdut obiectul:</label><br>
-			<select><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
+			<select name = "Ziua"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option>
 			<option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option>
 			<option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option></select>
-			<select><option value="ianuarie">Ianuarie</option><option value="februarie">Februarie</option><option value="martie">Martie</option><option value="aprilie">Aprilie</option><option value="mai">Mai</option><option value="iunie">Iunie</option><option value="iulie">Iulie</option><option value="august">August</option><option value="septembrie">Septembrie</option><option value="octombrie">Octombrie</option><option value="noiembrie">Noiembrie</option><option value="decembrie">Decembrie</option></select>
-			<select><option value="2010">2010</option><option value="2011">2011</option><option value="2012">2012</option><option value="2013">2013</option><option value="2014">2014</option><option value="2015">2015</option><option value="2016">2016</option></select>
-			</div><br>
+			<select name = "Luna"><option value="ianuarie">Ianuarie</option><option value="februarie">Februarie</option><option value="martie">Martie</option><option value="aprilie">Aprilie</option><option value="mai">Mai</option><option value="iunie">Iunie</option><option value="iulie">Iulie</option><option value="august">August</option><option value="septembrie">Septembrie</option><option value="octombrie">Octombrie</option><option value="noiembrie">Noiembrie</option><option value="decembrie">Decembrie</option></select>
+			<select name = "Anul"><option value="2010">2010</option><option value="2011">2011</option><option value="2012">2012</option><option value="2013">2013</option><option value="2014">2014</option><option value="2015">2015</option><option value="2016">2016</option><option value="2017">2017</option></select>
+			</div></div><br>
+			<div class="form-input">
 			<label>Categoria din care face parte:</label><br>
-			<select>
+			<select name = "Categoria">
 			<option value="electronice">Electronice</option>
 			<option value="haine">Haine</option>
 			<option value="bijuterii">Bijuterii</option>
@@ -46,18 +51,22 @@
 			<option value="animale">Animale</option>
 			<option value="jucarii">Jucarii</option>
 			<option value="altele">altele...</option>
-			</select><br><br>
+			</select></div><br>
+			<div class="form-input">
 			<label>Obiectul a fost:</label><br>
-			<select>
+			<select name = "stare">
 			<option value="gasit">Gasit</option>
 			<option value="pierdut">Pierdut</option>
-			</select><br><br>
+			</select></div><br>
+			<div class="form-input">
 			Incarcati o poza cu obiectul:<br>
-			<input type="file" name="poza"><br><br>
+			<input type="file" name="poza"></div><br>
+			<div class="form-input">
 			Introduceti o scurta descriere a obiectului:<br/>
-			<textarea cols="40" rows="5" ></textarea><br>
+			<textarea cols="40" rows="5" name="descriere"></textarea></div>
 			<br><br>
-			<input type="submit"  class="button">
+			<!--<input type="submit"  class="button"> -->
+			<button type="submit" class="button" onclick="document.getElementById('registerAnunt').submit()" >Trimite</button>
 			<br><br>
 			<br/><br/><br/><br/><br/><br/>
 		</div>	
