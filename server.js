@@ -133,7 +133,7 @@ http.createServer(function (request, response) {
                     if (err) console.log (err);
                 }
         );
-    }
+    }else
 
     if (request.method == "GET" && par.pathname == "/register.html" && par.query.nume) {
         var item = {
@@ -164,7 +164,7 @@ http.createServer(function (request, response) {
                 
 
 
-    } 
+    } else
 	if (request.method == "GET" && par.pathname == "/new.html" && par.query.titlul){
 		var item = {
 			titlul : par.query.titlul,
