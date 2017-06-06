@@ -158,20 +158,16 @@ http.createServer(function (request, response) {
                         console.log(err);
                     console.log("Number of records inserted: " + res.insertedCount);
                     response.writeHead(200, {
-                        "Content-Type": "text/plain"
+                        "Content-Type": "text/html"
                     });
-                    response.write("anuntul a fost inserat");
-                    
-                    response.end();
+                    fs.createReadStream("./html pages/AnuntCreat.html").pipe(response);
                 });
             } else {
                 console.log("titlul anuntului este deja in baza de date la aceasta categorie"); // de returna pe pagina 
                 response.writeHead(200, {
-                    "Content-Type": "text/plain"
+                    "Content-Type": "text/html"
                 });
-                response.write("titlu deja existent in baza de date");
-               
-                response.end();
+                fs.createReadStream("./html pages/AnuntNeCreat.html").pipe(response);
             }
         });
     } else
