@@ -25,14 +25,20 @@
 		<div class="mainn">
 			<br>
 			<h2>Mesaj nou</h2>
-			<form><label>Catre:</label></form>
+			<form id="newMessage">
+			<div class="form-input">
+			<label>Catre:</label>
 			<input type="text" name="titlul" placeholder="Introduceti ID UTILIZATOR"><br><br>
+			</div>
+			<div class="form-input">
 			Mesaj:<br>
 			<textarea cols="60" rows="7" ></textarea>
 			<br>
-			<input type="submit" value="Trimite" class="button">
+			</div>
+			<button type="submit" class="button" onclick="document.getElementById('newMessage').submit()" >Trimite</button>
 			<br><br>
 				<br/><br/><br/><br/><br/><br/>
+			</form>
 		</div>	
 		<hr>
 		<div class="footer">
