@@ -146,8 +146,8 @@ http.createServer(function (request, response) {
         })
 
     } else
-<<<<<<< HEAD
-=======
+
+
     if (request.method == "GET" && par.pathname == "/gasite" && par.query.anunturi) {
 
         collections.electronice.find({'stare': "gasit"}).toArray(function (err, items) {
@@ -158,7 +158,7 @@ http.createServer(function (request, response) {
         })
 
     } else
->>>>>>> master
+
     if (request.method == "GET" && par.pathname == "/new.html" && par.query.titlul) {
         var item = {
             _id: par.query.titlul,
