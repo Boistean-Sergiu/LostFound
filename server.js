@@ -146,6 +146,19 @@ http.createServer(function (request, response) {
         })
 
     } else
+<<<<<<< HEAD
+=======
+    if (request.method == "GET" && par.pathname == "/gasite" && par.query.anunturi) {
+
+        collections.electronice.find({'stare': "gasit"}).toArray(function (err, items) {
+            //console.log(items);
+            response.writeHead(200, {"Content-Type": "text/plain"});
+            response.write(JSON.stringify(items));
+            response.end();
+        })
+
+    } else
+>>>>>>> master
     if (request.method == "GET" && par.pathname == "/new.html" && par.query.titlul) {
         var item = {
             _id: par.query.titlul,
