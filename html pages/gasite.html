@@ -1,42 +1,58 @@
 <!DOCTYPE html>
 
 <html lang="en">
-	<head>
-		<title>
-			Obiecte gasite
-		</title>
-		<meta charset="UTF-8">
-		<link rel="stylesheet" href="css/homepage.css" type="text/css"/>
-		<link rel="stylesheet" href="css/gasite.css" type="text/css"/>
-	</head>
-	
-	<body class="body">
-		<header class="mainheader">
-			<a href="index.html"><img src="./images/header.png" alt="Home" /></a>
-			<nav><ul>
-				<li><a href="index.html">Home</a></li>
-				<li class="active"><a href="gasite.html">Obiecte gasite</a></li>
-				<li><a href="pierdute.html">Obiecte pierdute</a></li>
-				<li><a href="mesaje.html">Mesaje</a></li>
-				<li><a href="contul.html">Contul meu</a></li>
-				<li><a href="indexPrincipal.html">Logout</a></li>
-			</ul></nav>	
-		<div class="mainn">
-			<div class="new">
-				<nav><ul>
-					<li><a href="new.html">Daca ai gasit un obiect creeaza un anunt nou pentru a gasi persoana care il cauta >>> </a></li>
-				</ul></nav>	
-			</div>
-			<br/><br/><br/>
-			<div class="content">
-				<h1>Aici afisez anunturile cu obiecte gasite</h1>
-			</div>	
-			<br/><br/><br/><br/><br/><br/>
-			</div>			
-		</header>	
-		<hr>
-		<div class="footer">
-			TW Lost&Found Project
-		</div>
-	</body>
+    <head>
+        <title>
+            Obiecte gasite
+        </title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/homepage.css" type="text/css"/>
+        <link rel="stylesheet" href="css/gasite.css" type="text/css"/>
+        <script>
+            function loadGasite() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("gasite").innerHTML = this.responseText;
+                    }
+                };
+                xhttp.open("GET", "/gasite?anunturi=1", true);
+                xhttp.send();
+            }
+        </script>
+    </head>
+
+    <body class="body">
+        <header class="mainheader">
+            <a href="index.html"><img src="./images/header.png" alt="Home" /></a>
+            <nav><ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="gasite.html">Obiecte gasite</a></li>
+                    <li><a href="pierdute.html">Obiecte pierdute</a></li>
+                    <li><a href="mesaje.html">Mesaje</a></li>
+                    <li><a href="contul.html">Contul meu</a></li>
+                    <li><a href="indexPrincipal.html">Logout</a></li>
+                </ul></nav>	
+            <div class="mainn">
+                <div class="new">
+                    <nav><ul>
+                            <li><a href="new.html">Daca ai gasit un obiect creeaza un anunt nou pentru a gasi persoana care il cauta >>> </a></li>
+                        </ul></nav>	
+                </div>
+                <br/><br/><br/>
+                <div class="content">
+                    <h1>Aici afisez anunturile cu obiecte gasite</h1>
+
+                    <button type="button" onclick="loadGasite()"> Refresh </button>
+                    <p id ="gasite"></p>
+
+                </div>	
+                <br/><br/><br/><br/><br/><br/>
+            </div>			
+        </header>	
+        <hr>
+        <div class="footer">
+            TW Lost&Found Project
+        </div>
+    </body>
 </html>
