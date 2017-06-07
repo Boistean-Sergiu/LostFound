@@ -8,9 +8,21 @@
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="css/homepage.css" type="text/css"/>
 		<link rel="stylesheet" href="css/pierdute.css" type="text/css"/>
+		<script>
+            function loadPierdute() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("pierdute").innerHTML = this.responseText;
+                    }
+                };
+                xhttp.open("GET", "/pierdute?anunturi=1", true);
+                xhttp.send();
+            }
+        </script>
 	</head>
 	
-	<body class="body">
+	<body class="body" >
 		<header class="mainheader">
 			<a href="index.html"><img src="./images/header.png" alt="Home" /></a>
 			<nav><ul>
@@ -30,6 +42,10 @@
 				<br/><br/><br/>
 				<div class="content">
 					<h1>Aici afisez anunturile cu obiecte pierdute</h1>
+					
+					<button type="button" onclick="loadPierdute()"> Refresh </button>
+                    <p id ="pierdute"></p>
+					
 				</div>	
 				<br/><br/><br/><br/><br/><br/>
 			</div>			
