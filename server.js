@@ -135,7 +135,17 @@ http.createServer(function (request, response) {
                         console.log(err);
                 }
         );
-    }
+    } else
+    if (request.method == "GET" && par.pathname == "/pierdute" && par.query.anunturi) {
+
+        collections.electronice.find({'stare': "pierdut"}).toArray(function (err, items) {
+            //console.log(items);
+            response.writeHead(200, {"Content-Type": "text/plain"});
+            response.write(JSON.stringify(items));
+            response.end();
+        })
+
+    } else
     if (request.method == "GET" && par.pathname == "/new.html" && par.query.titlul) {
         var item = {
             _id: par.query.titlul,
@@ -147,8 +157,8 @@ http.createServer(function (request, response) {
             //poza :par.query.poza,
             descriere: par.query.descriere
         }
-        
-        
+
+
         collections[par.query.Categoria].findOne({_id: par.query.titlul}, function (err, user) {
 
             if (user === null) {
