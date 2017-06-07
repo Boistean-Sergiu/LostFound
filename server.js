@@ -1,3 +1,4 @@
+
 var http = require('http');
 var fs = require('fs');
 var url = require('url');
@@ -90,6 +91,12 @@ Init = function (callback) {   // make a module for that ?
                     } else {
                         console.log("'collections.electronice' is NULL ");
                     }
+					collections.messages = db.collection('messages');
+                    if (collections.jucarii != null) {
+                        console.log("connected to 'messages' collection ");
+                    } else {
+                        console.log(" collections.messages is NULL ");
+                    }
                     // de adaugat modificat colectii in functie de ce avem nevoie ...
 
                 } else {
@@ -108,6 +115,40 @@ function send404Response(response) {
     response.write("Error 404: Page not found! ");
     response.end();
 }
+/*function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+function checkCookie() {
+    var username = getCookie("username");
+    if (username != "") {
+        alert("Welcome again " + username);
+    } else {
+		setCookie("username",_id,365);
+        username = prompt("Please enter your name:", "");
+        if (username != "" && username != null) {
+            setCookie("username", username, 365);
+        }
+    }
+}*/
+
 
 http.createServer(function (request, response) {
 
@@ -138,23 +179,62 @@ http.createServer(function (request, response) {
     } else
     if (request.method == "GET" && par.pathname == "/pierdute" && par.query.anunturi) {
 
+        response.writeHead(200, {"Content-Type": "text/plain"});
         collections.electronice.find({'stare': "pierdut"}).toArray(function (err, items) {
-            //console.log(items);
-            response.writeHead(200, {"Content-Type": "text/plain"});
+            response.write(JSON.stringify(items));
+        });
+		collections.animale.find({'stare': "pierdut"}).toArray(function (err, items) {
+            response.write(JSON.stringify(items));
+        });
+		collections.haine.find({'stare': "pierdut"}).toArray(function (err, items) {
+            response.write(JSON.stringify(items));
+        });
+		collections.bijuterii.find({'stare': "pierdut"}).toArray(function (err, items) {
+            response.write(JSON.stringify(items));
+        });
+		collections.tichete.find({'stare': "pierdut"}).toArray(function (err, items) {
+            response.write(JSON.stringify(items));
+        });
+		collections.accesorii.find({'stare': "pierdut"}).toArray(function (err, items) {
+            response.write(JSON.stringify(items));
+        });
+		collections.bani.find({'stare': "pierdut"}).toArray(function (err, items) {
+            response.write(JSON.stringify(items));
+        });
+		collections.jucarii.find({'stare': "pierdut"}).toArray(function (err, items) {
             response.write(JSON.stringify(items));
             response.end();
-        })
+        });
+		
 
     } else
     if (request.method == "GET" && par.pathname == "/gasite" && par.query.anunturi) {
-
+		response.writeHead(200, {"Content-Type": "text/plain"});
         collections.electronice.find({'stare': "gasit"}).toArray(function (err, items) {
-            //console.log(items);
-            response.writeHead(200, {"Content-Type": "text/plain"});
+            response.write(JSON.stringify(items));
+        });
+		collections.animale.find({'stare': "gasit"}).toArray(function (err, items) {
+            response.write(JSON.stringify(items));
+        });
+		collections.haine.find({'stare': "gasit"}).toArray(function (err, items) {
+            response.write(JSON.stringify(items));
+        });
+		collections.bijuterii.find({'stare': "gasit"}).toArray(function (err, items) {
+            response.write(JSON.stringify(items));
+        });
+		collections.tichete.find({'stare': "gasit"}).toArray(function (err, items) {
+            response.write(JSON.stringify(items));
+        });
+		collections.accesorii.find({'stare': "gasit"}).toArray(function (err, items) {
+            response.write(JSON.stringify(items));
+        });
+		collections.bani.find({'stare': "gasit"}).toArray(function (err, items) {
+            response.write(JSON.stringify(items));
+        });
+		collections.jucarii.find({'stare': "gasit"}).toArray(function (err, items) {
             response.write(JSON.stringify(items));
             response.end();
-        })
-
+        });
     } else
     if (request.method == "GET" && par.pathname == "/new.html" && par.query.titlul) {
         var item = {
@@ -201,6 +281,7 @@ http.createServer(function (request, response) {
             email: par.query.email,
             status: "logged"
         };
+		//setCookie("register",item._id,365);
         collections.useri.findOne({_id: par.query.id_utilizator}, function (err, user) {
 
             if (user === null) {
@@ -217,23 +298,33 @@ http.createServer(function (request, response) {
                 fs.createReadStream("./html pages/login.html").pipe(response);
             }
         });
-
-
-
-
+		//setCookie("username",_id,365);
     } else
-    if (request.method == "GET" && par.pathname == "/new.html" && par.query.titlul) {
-        var item = {
-            titlul: par.query.titlul,
-            ziua: par.query.ziua,
-            luna: par.query.luna,
-            anul: par.query.anul,
-            categoria: par.query.categoria,
-            stare: par.query.stare,
-            poza: par.query.poza,
-            descriere: par.query.descriere
-        };
-    } else
+	if(request.method == "GET" && par.pathname == "/newMessage.html" && par.query.titlul){
+			//username = getCookie("username");
+		var item = {
+			//detinator : username,
+			title : par.query.titlul,
+			mesaj : par.query.mesajj
+		}
+		collections.messages.insert(item,function(err,res){
+			if(err) console.log(err);
+			console.log("Number of records inserted: " + res.insertedCount);
+			response.writeHead(200, {"Content-Type": "text/html"});
+			fs.createReadStream("./html pages/mesajeTrimise.html").pipe(response);
+		});
+	}
+	else 
+	/*if(request.method == "GET" && par.pathname == "/mesaje.html" && par.query.titlul){
+		var username = getCookie("username");
+		collection.messages.find({'titlul' : username}).toArray(function(err,res){
+			if(err) console.log(err);
+			response.writeHead(200, {"Content-Type": "text/plain"});
+			response.write(JSON.stringify(items));
+			response.end();
+		});
+	}
+	else*/
     if (request.method == "GET")
         switch (par.pathname) {
             case '/' :
