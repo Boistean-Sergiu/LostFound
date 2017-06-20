@@ -13,22 +13,34 @@ a:hover, a:active{
 	margin-bottom: 0px;
 }
 .new nav{
-	background-color: #99ff99;
-	height: 40px;
-
+		 font-size: 1.1em; /* 12/16 */
+    width: 100%; /* 650/960 */
+    max-width: 960px;
+    text-align: center;
+    margin: 0px auto; /*auto centers the container */
+    padding: 0.1%;
+	background-color: #99d6ff;
+	height: auto;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 }
 .new nav ul{ 
+
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
 list-style: none;
-margin: 0 auto;	
+margin: auto;	
 }
 .new nav ul li{
-	float: left;
+	display: inline-block;
 	display: inLine;
 }
 .new nav a:Link, .new nav a:visited{
 	color: #000000;
 	display: inline-block;
-	padding: 10px 70px;
+	padding: 10px 20px;
 	height: 20px;
 }
 .new nav a:hover, .new nav a:active,
@@ -54,6 +66,78 @@ margin: 0 auto;
 }
 
 
+
+th {
+    background-color: #99d6ff;
+    color: white;
+}
+
+#cart {
+  display: block;
+  border-collapse: collapse;
+  margin: 0px auto;
+  width: 80%;
+  font-size: 1.1em;
+  text-align: center;
+  color: #444;
+  	height: auto;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+#cart thead th {
+  padding: 8px;
+  font-weight: bold;
+  color: #444;
+}
+
+#cart thead th.first {
+  width: 30%;
+}
+#cart thead th.second {
+  width: 20%;
+}
+#cart thead th.third {
+  width: 20%;
+}
+#cart thead th.fourth {
+  width: 20%;
+}
+#cart thead th.fifth {
+  width: 20%;
+}
+#cart thead th.sixth {
+  width: 15%;
+}
+
+#cart tbody td {
+  text-align: center;
+  margin-top: 4px;
+}
+
+tr.productitm {
+  height: 65px;
+  line-height: 65px;
+  border-bottom: 1px solid #3ebde8;
+}
+
+.pagination a {
+	
+    color: black;
+	font-size: 1.1em;
+    padding: 3px 6px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+.pagination a.active {
+    background-color: #3ebde8;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {
+	background-color: #3ebde8;
+	}
 
 hr{
 	margin-left:0px;

@@ -22,14 +22,13 @@
         </script>
 
     </head>
-
     <body class="body">
         <header class="mainheader">
             <a href="index.html"><img src="./images/header.png" alt="Home" /></a>
             <nav><ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="gasite.html">Obiecte gasite</a></li>
-                    <li  class="active"><a href="pierdute.html">Obiecte pierdute</a></li>
+                    <li class="active"><a href="pierdute.html">Obiecte pierdute</a></li>
                     <li><a href="mesaje.html">Mesaje</a></li>
                     <li><a href="contul.html">Contul meu</a></li>
                     <li><a href="indexPrincipal.html">Logout</a></li>
@@ -37,18 +36,63 @@
             <div class="mainn">
                 <div class="new">
                     <nav><ul>
-                            <li><a href="new.html">Daca ai pierdut un obiect creeaza un anunt nou si noi te ajutam sa il gasesti >>> </a></li>
-                        </ul></nav>
+                            <li><a href="new.html">Anunt nou </a></li>
+                        </ul></nav>	
                 </div>
-                <br/><br/><br/>
+                <br/>
                 <div class="content">
-                    <h1>Aici afisez anunturile cu obiecte pierdute</h1>
+                    <h2>Obiecte gasite</h2>
+					
+					
+					
+				<table>
+					<table id="cart">
+						<thead>
+							<tr>
+								<th class="first">Poza</th>
+								<th class="second">Titlul</th>
+								<th class="third">Categorie</th>
+								<th class="fourth">Stare</th>
+								<th class="fifth"> Descriere</th>
+								<th class="sixth"> *        </th>
+							</tr>
+					</thead>
+					<tbody>
+  					
+  					<tr class="productitm">
+   					 
+						<td><img src="images/design-bundle-pack.png" class="thumb"></td>
+    					<td>ceva</td>
+						<td>ceva</td>
+						<td>ceva</td>
+						<td>ceva</td>
+						<td><button type="button" onclick="loadGasite()"> Go </button></td>
+ 					 </tr>
+					 </tbody>
+					 </table>
+
+					<br/><br/>
 
                     <button type="button" onclick="loadPierdute()"> Refresh </button>
                     <p id ="pierdute"></p>
 
+					
+
                 </div>	
-                <br/><br/><br/><br/><br/><br/>
+                <br/><br/>
+				<center>
+				<div class="pagination">
+				<a href="#">&laquo;</a>
+				<a class="active" href="#">1</a>
+				<a href="#">2</a>
+				<a href="#">3</a>
+				<a href="#">4</a>
+				<a href="#">5</a>
+				<a href="#">6</a>
+				<a href="#">&raquo;</a>
+				</div>
+				</center>
+				<br/>
             </div>			
         </header>	
         <hr>

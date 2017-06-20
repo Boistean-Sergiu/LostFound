@@ -2,15 +2,38 @@ body{
 	background-color: rgb(200,200,200);
 	
 }
+body{
+	font-size: 87.5%;
+	font-family: Arial;
+	line-height: 1.5;
+	text-align:left;
+}
+a{
+	text-decoration:none;
+}
+a img{
+	width: 500px;
+	padding: center;
+	height: auto;
+	margin: auto;
+	margin-bottom: auto;
+}
+a:link, a:visited{	
+}
+a:hover, a:active{
+}
+.body{
+	margin: 0 auto;
+	width: 56%;
+	clear: both;
+}
 
 hr{
 	margin-left:250px;
 	margin-right:250px;
 	
 }
-a img{
-	padding: 0px 290px;
-}
+
 h1{
 	text-align: center;
 }

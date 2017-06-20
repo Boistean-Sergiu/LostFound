@@ -13,27 +13,39 @@ a:hover, a:active{
 	margin-bottom: 0px;
 }
 .new nav{
-	background-color: #fff;
-	height: 40px;
-
+		 font-size: 1.1em; /* 12/16 */
+    width: 100%; /* 650/960 */
+    max-width: 960px;
+    text-align: center;
+    margin: 0px auto; /*auto centers the container */
+    padding: 0.1%;
+	background-color: #99d6ff;
+	height: auto;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
 }
 .new nav ul{ 
+
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
 list-style: none;
-margin: 0 auto;	
+margin: auto;	
 }
 .new nav ul li{
-	float: left;
+	display: inline-block;
 	display: inLine;
 }
 .new nav a:Link, .new nav a:visited{
 	color: #000000;
 	display: inline-block;
-	padding: 10px 270px;
+	padding: 10px 20px;
 	height: 20px;
 }
 .new nav a:hover, .new nav a:active,
 .new nav .active a:link, .new nav .active a:visited{
-	background-color: #b3b3b3;
+	background-color: #4dff4d;
 	text-shadow: none;
 }
 .new nav ul li a{
@@ -55,6 +67,71 @@ margin: 0 auto;
 
 
 
+th {
+    background-color: #99d6ff;
+    color: white;
+}
+
+#mesaj {
+  display: block;
+  border-collapse: collapse;
+  margin: 0px 32%;
+  width: 80%;
+  font-size: 1.1em;
+  text-align: center;
+  color: #444;
+  	height: auto;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+#mesaj thead th {
+  padding: 3px;
+  font-weight: bold;
+  color: #444;
+}
+
+#mesaj thead th.first {
+  width: 30%;
+}
+#mesaj thead th.second {
+  width: 40%;
+}
+
+#mesaj thead th.fourth {
+  width: 20%;
+}
+
+
+#mesaj tbody td {
+  text-align: center;
+  margin-top: 4px;
+}
+
+tr.mesaje {
+  height: 65px;
+  line-height: 65px;
+  border-bottom: 1px solid #3ebde8;
+}
+
+.pagination a {
+	
+    color: black;
+	font-size: 1.1em;
+    padding: 3px 6px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+.pagination a.active {
+    background-color: #3ebde8;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {
+	background-color: #3ebde8;
+	}
+
 hr{
 	margin-left:0px;
 	margin-right:0px;
@@ -63,9 +140,6 @@ hr{
 .footer{
 	font-size: 12px;
 }
-
-
-
 
 
 

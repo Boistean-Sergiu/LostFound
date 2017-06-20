@@ -2,12 +2,21 @@ body{
 	background-color: rgb(200,200,200);
 	
 }
-hr{
-	margin-left:250px;
-	margin-right:250px;
+body{
+	font-size: 87.5%;
+	font-family: Arial;
+	line-height: 1.5;
+	text-align:left;
+}
+a{
+	text-decoration:none;
 }
 a img{
-	padding: 0px 290px;
+	width: 500px;
+	padding: center;
+	height: auto;
+	margin: auto;
+	margin-bottom: auto;
 }
 h1{
 	text-align: center;
